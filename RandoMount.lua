@@ -2,7 +2,7 @@
 --June 1, 2022
 _addon.name = 'RandoMount'
 _addon.author = 'Harissa'
-_addon.version = '1.0'
+_addon.version = '1.1'
 _addon.commands = {'RandoMount', 'rmount'}
 
 resources = require('resources')           -- a bunch of item info that windower holds
@@ -10,8 +10,7 @@ resources = require('resources')           -- a bunch of item info that windower
 myMounts = {}
 
 function initialize_myMounts()
-
-    populate_myMounts()
+    
     math.randomseed(os.time())
 
 end
@@ -19,6 +18,7 @@ end
 function format_Mount(name)
     
     local s, _ = string.gsub(name, ' companion', '')
+    s, _ = string.gsub(s, ' whistle', '')
     s, _ = string.gsub(s, '♪', '')
     return s
     
@@ -57,6 +57,9 @@ function mountUp()
 end
 
 function randomize()
+    if myMounts == {} then
+        populate_myMounts()
+    end
 
     return myMounts[math.random(1, table.getn(myMounts))]
    
