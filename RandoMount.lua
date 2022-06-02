@@ -7,20 +7,30 @@ _addon.commands = {'RandoMount', 'rmount'}
 
 resources = require('resources')           -- a bunch of item info that windower holds
 
-
 function initialize_myMounts()
     
     math.randomseed(os.time())
 
 end
 
-function format_Mount(name)
+function mountUp()
     
-    local s, _ = string.gsub(name, ' companion', '')
-    s, _ = string.gsub(s, ' whistle', '')
-    s, _ = string.gsub(s, '♪', '')
-    return s
+    send_to_chat(randomize())
+
+end
+
+function send_to_chat(chosen_Mount)
+
+    windower.chat.input('/mount "'..chosen_Mount..'"')
+
+end
+
+function randomize()
     
+    local myMounts_list = populate_myMounts()
+
+    return myMounts_list[math.random(1, table.getn(myMounts_list))]
+   
 end
 
 function populate_myMounts()
@@ -51,24 +61,13 @@ function populate_myMounts()
     return myMounts
 end
 
-function mountUp()
+function format_Mount(name)
     
-    send_to_chat(randomize())
-
-end
-
-function randomize()
+    local s, _ = string.gsub(name, ' companion', '')
+    s, _ = string.gsub(s, ' whistle', '')
+    s, _ = string.gsub(s, '♪', '')
+    return s
     
-    local myMounts_list = populate_myMounts()
-
-    return myMounts_list[math.random(1, table.getn(myMounts_list))]
-   
-end
-
-function send_to_chat(chosen_Mount)
-
-    windower.chat.input('/mount "'..chosen_Mount..'"')
-
 end
 
 initialize_myMounts()
