@@ -2,12 +2,11 @@
 --June 1, 2022
 _addon.name = 'RandoMount'
 _addon.author = 'Harissa'
-_addon.version = '1.1'
+_addon.version = '1.2'
 _addon.commands = {'RandoMount', 'rmount'}
 
 resources = require('resources')           -- a bunch of item info that windower holds
 
-myMounts = {}
 
 function initialize_myMounts()
     
@@ -25,7 +24,8 @@ function format_Mount(name)
 end
 
 function populate_myMounts()
-    
+
+    local myMounts = {}
     key_items = windower.ffxi.get_key_items()  -- player's current key items
 
     for _, id in ipairs(key_items) do
@@ -48,6 +48,7 @@ function populate_myMounts()
 
     end
 
+    return myMounts
 end
 
 function mountUp()
@@ -57,11 +58,10 @@ function mountUp()
 end
 
 function randomize()
-    if myMounts == {} then
-        populate_myMounts()
-    end
+    
+    local myMounts_list = populate_myMounts()
 
-    return myMounts[math.random(1, table.getn(myMounts))]
+    return myMounts_list[math.random(1, table.getn(myMounts_list))]
    
 end
 
