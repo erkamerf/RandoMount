@@ -30,7 +30,7 @@ function randomize()
     local myMounts_list = populate_myMounts()
 
     return myMounts_list[math.random(1, table.getn(myMounts_list))]
-   
+
 end
 
 function populate_myMounts()
@@ -65,6 +65,7 @@ function format_Mount(name)
     
     local s, _ = string.gsub(name, ' companion', '')
     s, _ = string.gsub(s, ' whistle', '')
+    s, _ = string.gsub(s, ' key', '')
     s, _ = string.gsub(s, '♪', '')
     return s
     
