@@ -2,7 +2,7 @@
 --June 1, 2022
 _addon.name = 'RandoMount'
 _addon.author = 'Harissa'
-_addon.version = '1.2'
+_addon.version = '1.3'
 _addon.commands = {'RandoMount', 'rmount'}
 
 resources = require('resources')           -- a bunch of item info that windower holds
@@ -49,7 +49,7 @@ function populate_myMounts()
                 if key_itemID.name ~="trainer's whistle" then
             
                     table.insert( myMounts, format_Mount(key_itemID.name))
-                    --windower.chat.input("/echo "..format_Mount(key_itemID.name))
+                    windower.chat.input("/echo "..format_Mount(key_itemID.name))
                 end
 
             end
@@ -67,6 +67,7 @@ function format_Mount(name)
     s, _ = string.gsub(s, ' whistle', '')
     s, _ = string.gsub(s, ' key', '')
     s, _ = string.gsub(s, '♪', '')
+    s, _ = string.gsub(s, 'Craklaw','Cracklaw') -- this is a workaround for spelling inconsistency in-game
     return s
     
 end
