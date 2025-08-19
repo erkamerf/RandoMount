@@ -49,7 +49,7 @@ function populate_myMounts()
                 if key_itemID.name ~="trainer's whistle" then
             
                     table.insert( myMounts, format_Mount(key_itemID.name))
-                    windower.chat.input("/echo "..format_Mount(key_itemID.name))
+                    --windower.chat.input("/echo "..format_Mount(key_itemID.name))
                 end
 
             end
