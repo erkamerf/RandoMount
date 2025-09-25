@@ -67,7 +67,6 @@ function format_Mount(name)
     s, _ = string.gsub(s, ' whistle', '')
     s, _ = string.gsub(s, ' key', '')
     s, _ = string.gsub(s, '♪', '')
-    s, _ = string.gsub(s, 'Craklaw','Cracklaw') -- this is a workaround for spelling inconsistency in-game
     return s
     
 end
